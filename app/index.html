@@ -16,9 +16,17 @@
     <!-- endbuild -->
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/example.css">
+    <link rel="stylesheet" href="styles/raptor-front-end.css">
     <!-- endbuild -->
+    <style type="text/css">
+        .raptor {
+            height: 130px;
+            margin-bottom: 50px;
+        }
+    </style>
   </head>
-  <body ng-app="raptorApp">
+  <body ng-app="raptorApp" class="editable" data-id="body-1">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -44,7 +52,6 @@
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
@@ -56,7 +63,33 @@
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
+        <script src="scripts/directives/raptor.js"></script>
+        <script src="scripts/raptor.js"></script>
         <script src="scripts/controllers/main.js"></script>
         <!-- endbuild -->
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        jQuery(function($) {
+            $('.editable').raptor({
+                "plugins": {
+                    "dock": {
+                        "docked": true
+                    },
+                    "classMenu": {
+                        "classes": {
+                            "Blue background": "cms-blue-bg",
+                            "Round corners": "cms-round-corners",
+                            "Indent and center": "cms-indent-center"
+                        }
+                    },
+                    "snippetMenu": {
+                        "snippets": {
+                            "Grey Box": "<div class=\"grey-box\"><h1>Grey Box<\/h1><ul><li>This is a list<\/li><\/ul><\/div>"
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
